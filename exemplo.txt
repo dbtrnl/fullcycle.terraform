@@ -1,1 +1,1 @@
-isso veio de flag\n
+Valor do output

@@ -12,3 +12,15 @@ variable "conteudo" {
     type = string
     default = "Default string"
 }
+
+output "id-do-arquivo" {
+    value = resource.local_file.exemplo.id
+}
+
+output "conteudo" {
+    value = var.conteudo
+}
+
+output "chicken-egg" {
+    value = sort(["🐔", "🥚"])
+}
