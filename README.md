@@ -58,3 +58,7 @@ Outra formas de definir variáveis
 - Bash: exportar variáveis de ambiente prefixo `TF_VAR_` que elas serão aplicadas automaticamente
   - Ou `terraform apply -var "minha_var=teste"`
 - Criar arquivo com outro nome (*teste.tfvars*) e passar como parâmetro: `terraform apply -var-file teste.tfvars`
+
+## Data sources
+- É o que lê as informações criadas por um *resource* (ou alguma outra informação que já exista)
+  - No caso do `local_file`, existe o resource e o data source.
