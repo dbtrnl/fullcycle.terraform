@@ -48,3 +48,13 @@ Arquivo **terraform.tfstate** tem o estado atual da infra (com vários tipos de 
 
 Se algum arquivo for alterado, o Terraform dá um *destroy* e recria o arquivo (ao invés de só editar)
   - Ao alterar, *tfstate* antigo é salvo como *terraform.tfstate.backup*
+
+## Setando variáveis
+- Variável vazia pode ser definida com *variable teste {}* e referenciada com *var.teste*
+  - Na hora do apply, o valor da var deve ser fornecido
+
+Outra formas de definir variáveis  
+- Arquivo **terraform.tfvars** e definir variáveis lá (esse aqruivo é lido por default)
+- Bash: exportar variáveis de ambiente prefixo `TF_VAR_` que elas serão aplicadas automaticamente
+  - Ou `terraform apply -var "minha_var=teste"`
+- Criar arquivo com outro nome (*teste.tfvars*) e passar como parâmetro: `terraform apply -var-file teste.tfvars`

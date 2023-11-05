@@ -5,5 +5,10 @@
 # Ver docs: registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file.html
 resource "local_file" "exemplo" {
     filename = "exemplo.txt"
-    content = "Hello world!\n"
+    content = var.conteudo
+}
+
+variable "conteudo" {
+    type = string
+    default = "Default string"
 }
