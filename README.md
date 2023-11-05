@@ -27,3 +27,24 @@
 
 ## Providers
 `registry.terraform.io`
+
+---
+
+## Instalação
+- Adicionar chave gpg, repo APT e instalar.
+
+---
+
+## Usando
+- Arquivos são feitos com Hashicorp Configuration Language (HCL), que tem semelhanças com JSON
+- Iniciar com `terraform init`, irá baixar providers listados nos arquivos **.tf** do projeto
+  - Então é criado um arquivo de *lock* e os providers são baixados na pasta *.terraform*
+
+Para aplicar as configurações:
+`terraform plan` mostra o plano de ação
+`terraform apply` aplica o plano (depois de uma nova etapa de confirmação)
+
+Arquivo **terraform.tfstate** tem o estado atual da infra (com vários tipos de hashes pros resources)
+
+Se algum arquivo for alterado, o Terraform dá um *destroy* e recria o arquivo (ao invés de só editar)
+  - Ao alterar, *tfstate* antigo é salvo como *terraform.tfstate.backup*
