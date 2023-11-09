@@ -104,3 +104,17 @@ Outra formas de definir variáveis
 - *Route table default* tem destination local e também destination *0.0.0.0/0* com target *igw-0dea4d77*
   - Significa que qualquer destino tem acesso, e o target é o *Internet gateway* - Ou seja, todas as subnets estão expostas à internet
 - *Security Group default* permite todo o tráfego - Qualquer protocolo, qualquer porta, tanto *inbound* quanto *outbound*
+
+---
+
+## Criando user admin na AWS
+Não consigo fazer conta AWS (sem cartão de crédito), então foda-se.
+Só fazer anotações e anotar o código. `terraform plan` ou `init` não funcionam com provider AWS sem credenciais (erro é bem didático)
+
+- Criou user com *"Programmatic access"* e *"AWS Management console access"*
+  - Ao invés de colocar o user num grupo, só deu o *AdministratorAccess*
+
+## Criando o Terraform
+- provider AWS usado era 3.54.0, versão atual (Nov/2023) é 5.24.0
+  - Versão Terraform >0.13 (exemplos antigos). Versão atual = 1.4.0
+  - Criar template básico e dar `terraform init` para baixar providers
