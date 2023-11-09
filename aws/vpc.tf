@@ -53,7 +53,7 @@ resource "aws_internet_gateway" "new-igw" {
 
 resource "aws_route_table" "new-rtb" {
     vpc_id = aws_vpc.new-vpc.id
-    route = {
+    route {
         cidr_block = "0.0.0.0/0" // Todo mundo pode acessar
         gateway_id = aws_internet_gateway.new-igw.id # Atachando route table no IGW acima
     }
