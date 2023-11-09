@@ -44,6 +44,8 @@ Para aplicar as configurações:
 `terraform plan` mostra o plano de ação
 `terraform apply` aplica o plano (depois de uma nova etapa de confirmação)
 `terraform apply --auto-approve` aprova automaticamente
+`terraform validate` para validar se o deploy não tem erros de sintaxe, etc (mesmo check é feito pelo `plan`)
+`terraform destroy` para destruir toda a infraestrutura
 
 Arquivo **terraform.tfstate** tem o estado atual da infra (com vários tipos de hashes pros resources)
 
@@ -126,3 +128,36 @@ Na VPC, todas as subnets dentro da route-table que tem acesso a internet tb ter�
   - Arquivo `vpc.tf` tem toda a config básica
 
 *Security group* é criado para segregar o cluster kubernetes da internet
+
+## IAM / Policies
+Policies são regras específicas de acesso a algum serviço específico
+  - Ver parâmetro "resources" das policies, o default é todos
+  - Caso contrário tem que ser usado o *ARN (Amazon Resource Name)*
+
+A boa prática é criar uma *role* e atachar *policies* nela
+  - Cada *grupo* de usuários tem várias *roles* com várias *policies*
+
+## Cluster / Nodes
+Cluster demora ~10 min para ser criado na AWS (é um dos mais demorados). Node demora ~3 min para ser criado (isso em *2021*)
+Ver exemplos em `cluster.tf`.
+**Foi criada 1 role nova e atachando 2 policies default da AWS nela** - Policies relacionadas a EKS e VPC
+  - As próprias policies tem permissões específicas tipo criar máquina EC2, dar autoscale, usar IAM, KMS, ELB, etc...
+
+Ver exemplos em `nodes.tf`
+*AmazonEKSWorkerNodePolicy* permite a criação de worker nodes
+*AmazonEKS_CNI_Policy* permite comunicação entre nodes
+*AmazonEC2ContainerRegistryReadOnly* deixa máquina EC2 acessar o Container Registry
+
+Máquinas *t3.medium* são o default
+
+*aws-iam-authenticator* no `outputs.tf` é uma camada a mais de segurança para acessar clusters na AWS EKS
+  - Tem que ser instalado localmente
+
+*kubeconfig* criado localmente foi copiado para ~/.kube/config
+
+`kubectl get all`
+`kubectl create deploy nginx --image=nginx`
+`kubectl get po`
+`kubectl port-forward pod/nginx[...] 8181:80`
+
+Acessou pelo *localhost:80* o nginx deployado na AWS
