@@ -116,8 +116,10 @@ Só fazer anotações e anotar o código. `terraform plan` ou `init` não funcio
   - Ao invés de colocar o user num grupo, só deu o *AdministratorAccess*
 
 ## Criando o Terraform
+- Ver comentários mais detalhados nos arquivos
+
 - provider AWS usado era 3.54.0, versão atual (Nov/2023) é 5.24.0
   - Versão Terraform >0.13 (exemplos antigos). Versão atual = 1.4.0
   - Criar template básico e dar `terraform init` para baixar providers
 
-- Ver comentários mais detalhados nos arquivos
+Na VPC, todas as subnets dentro da route-table que tem acesso a internet tb terão acesso
