@@ -123,3 +123,6 @@ Só fazer anotações e anotar o código. `terraform plan` ou `init` não funcio
   - Criar template básico e dar `terraform init` para baixar providers
 
 Na VPC, todas as subnets dentro da route-table que tem acesso a internet tb terão acesso
+  - Arquivo `vpc.tf` tem toda a config básica
+
+*Security group* é criado para segregar o cluster kubernetes da internet
