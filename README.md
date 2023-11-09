@@ -43,6 +43,7 @@
 Para aplicar as configurações:
 `terraform plan` mostra o plano de ação
 `terraform apply` aplica o plano (depois de uma nova etapa de confirmação)
+`terraform apply --auto-approve` aprova automaticamente
 
 Arquivo **terraform.tfstate** tem o estado atual da infra (com vários tipos de hashes pros resources)
 
@@ -118,3 +119,4 @@ Só fazer anotações e anotar o código. `terraform plan` ou `init` não funcio
 - provider AWS usado era 3.54.0, versão atual (Nov/2023) é 5.24.0
   - Versão Terraform >0.13 (exemplos antigos). Versão atual = 1.4.0
   - Criar template básico e dar `terraform init` para baixar providers
+  
