@@ -161,3 +161,12 @@ Máquinas *t3.medium* são o default
 `kubectl port-forward pod/nginx[...] 8181:80`
 
 Acessou pelo *localhost:80* o nginx deployado na AWS
+
+---
+
+## Módulos
+- É um *agrupamento de resources*
+  - Módulo AWS VPC tem 220 inputs, 109 outputs e 80 resource, então é altamente customizável
+- Criação do módulo foi basicamente copiar conteúdo dos arquivos `cluster` e `nodes` para `modules/eks/main.tf` e `vpc` para `modules/vpc/main.tf`
+  - Referências a variáveis foram alteradas para vars do mesmo módulo
+  
