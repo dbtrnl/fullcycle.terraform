@@ -169,4 +169,9 @@ Acessou pelo *localhost:80* o nginx deployado na AWS
   - Módulo AWS VPC tem 220 inputs, 109 outputs e 80 resource, então é altamente customizável
 - Criação do módulo foi basicamente copiar conteúdo dos arquivos `cluster` e `nodes` para `modules/eks/main.tf` e `vpc` para `modules/vpc/main.tf`
   - Referências a variáveis foram alteradas para vars do mesmo módulo
-  
+  - Atentar para a convenção de nomes de arquivos. **Arquivos output** são a forma de compartilhar variáveis entre módulos diferentes
+
+- Se o módulo estiver em um repo público no github, ele pode ser publicado no repo Terraform (ver guia no site)
+
+## TFSTATE
+- Parâmetro *backend* permite salvar o `tfstate` em um bucket, para o caso de várias pessoas alterando o Terraform e tendo conflitos de tfstates.
